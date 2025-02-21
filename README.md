@@ -1,17 +1,17 @@
-# Gas Utility Customer Service Management System 🚀
+# Gas Utility Customer Service Management System 
 
 This Django-based application is designed to help a gas utility company manage high volumes of customer service requests efficiently. It provides features for customers to submit service requests, track their status, and manage their accounts. Additionally, customer support representatives can manage and resolve service requests.
 
 
 
 
-## Features ✨
+## Features 
 
 - Create Service Request: Users can fill out a form to create service requests, upload attachments, and specify request types.
 
 - Track Request Status: View the status of your submitted service requests at any time.
 
-## Technology Stack 🛠️
+## Technology Stack 
 
 Backend: Django (Python Framework) Frontend: HTML, CSS Database: SQLite (default Django database)
 
