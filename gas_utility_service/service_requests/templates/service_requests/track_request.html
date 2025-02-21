@@ -1,0 +1,48 @@
+{% extends "service_requests/base.html" %}
+{% block title %}Track Service Requests{% endblock %}
+{% block content %}
+
+<h2 class="mt-4">Track Service Requests</h2>
+
+<table class="table table-bordered table-striped mt-3 shadow">
+    <thead class="table-primary">
+        <tr>
+            <th>Name</th>
+            <th>Request Type</th>
+            <th>Status</th>
+            <th>Submitted At</th>
+            <th>Resolved At</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request.name }}</td>
+            <td>{{ request.request_type }}</td>
+            <td>
+                {% if request.status == "pending" %}
+                    <span class="badge bg-warning">Pending</span>
+                {% elif request.status == "in_progress" %}
+                    <span class="badge bg-info">In Progress</span>
+                {% else %}
+                    <span class="badge bg-success">Resolved</span>
+                {% endif %}
+            </td>
+            <td>{{ request.created_at }}</td>
+            <td>{{ request.resolved_at|default:"-" }}</td>
+            <td>
+                {% if request.status != "resolved" %}
+                    <a href="{% url 'resolve_request' request.id %}" class="btn btn-sm btn-success">Resolve</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" class="text-center">No service requests found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

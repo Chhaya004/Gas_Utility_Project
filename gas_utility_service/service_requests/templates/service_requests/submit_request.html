@@ -1,0 +1,30 @@
+{% extends "service_requests/base.html" %}
+
+{% block title %}Submit Service Request{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mt-4">Submit a Service Request</h2>
+    <form method="POST" enctype="multipart/form-data" class="card p-4 mt-3 shadow">
+        {% csrf_token %}
+        
+        <label for="id_name">Name:</label>
+        {{ form.name }}
+
+        <label for="id_email">Email:</label>
+        {{ form.email }}
+
+        <label for="id_request_type">Request Type:</label>
+        {{ form.request_type }}
+
+        <label for="id_description">Description:</label>
+        {{ form.description }}
+
+        <label for="id_attachment">Attachment (optional):</label>
+        {{ form.attachment }}
+
+        <button type="submit" class="btn btn-primary w-100">Submit Request</button>
+    </form>
+</div>
+{% endblock %}
+
